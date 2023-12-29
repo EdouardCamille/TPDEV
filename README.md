@@ -15,14 +15,14 @@ Un générateur de mot de passe est inclus, vous permettant de créer des mots d
 Installation
 Prérequis
 
-    Assurez-vous d'avoir Python installé sur votre machine.
-    Téléchargez le code source du projet.
+Assurez-vous d'avoir Python installé sur votre machine.
+Téléchargez le code source du projet.
 
 Étapes d'Installation
 
-    Ouvrez une fenêtre de terminal ou de commande.
-    Naviguez vers le répertoire contenant le code source du projet.
-    Exécutez le programme en utilisant la commande suivante :
+Ouvrez une fenêtre de terminal ou de commande.
+Naviguez vers le répertoire contenant le code source du projet.
+Exécutez le programme en utilisant la commande suivante :
 
     bash
 
@@ -30,12 +30,9 @@ Prérequis
 
 Utilisation
 
-    Lancez l'application et utilisez l'interface graphique pour naviguer entre les fonctionnalités.
-    Créez de nouveaux mots de passe, visualisez-les, supprimez-les et générez des mots de passe forts.
+Lancez l'application et utilisez l'interface graphique pour naviguer entre les fonctionnalités.
+Créez de nouveaux mots de passe, visualisez-les, supprimez-les et générez des mots de passe forts.
 
-Contributions
-
-Les contributions sont les bienvenues ! Si vous souhaitez améliorer ou ajouter des fonctionnalités, n'hésitez pas à créer une pull request.
 Avertissement
 
 Assurez-vous de garder votre fichier de base de données de mots de passe en sécurité. Ne partagez pas ce fichier et assurez-vous de disposer de sauvegardes adéquates.
