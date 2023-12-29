@@ -3,16 +3,20 @@ Introduction
 
 Bienvenue dans le Gestionnaire de Mot de Passe, une application simple en Python pour gérer et stocker en toute sécurité vos mots de passe. Cette application utilise une interface graphique conviviale pour vous permettre de créer, visualiser, et supprimer des entrées de mot de passe de manière intuitive.
 Fonctionnalités
+
 1. Créer un Nouveau Mot de Passe
 
 Vous pouvez facilement ajouter un nouveau mot de passe en spécifiant le titre, le nom d'utilisateur, le mot de passe, l'URL et des notes associées.
+
 2. Visualiser les Mots de Passe
 
 La fonction "View Passwords" affiche une liste de toutes vos entrées de mot de passe avec des détails tels que le titre, le nom d'utilisateur, le mot de passe, l'URL et les notes.
+
 3. Générer un Mot de Passe
 
 Un générateur de mot de passe est inclus, vous permettant de créer des mots de passe forts en spécifiant la longueur et le niveau de complexité souhaités.
 Installation
+
 Prérequis
 
 Assurez-vous d'avoir Python installé sur votre machine.
