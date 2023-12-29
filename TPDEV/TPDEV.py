@@ -169,8 +169,19 @@ class ApplicationGestionnaireMotsDePasse:
                 mot_de_passe_str = f"Mot de Passe {i + 1} - Titre: {mot_de_passe[1]}, Nom d'utilisateur: {mot_de_passe[2]}, " \
                                 f"Mot de Passe: {mot_de_passe[3]}, URL: {mot_de_passe[4]}, Notes: {mot_de_passe[5]}\n\n"
                 widget_texte.insert('end', mot_de_passe_str)
+
+                # Ajouter un bouton "Supprimer" pour chaque mot de passe
+                Button(fenetre_affichage, text=f"Supprimer le mot de passe n° {i + 1}", command=lambda index=i: self.supprimer_mot_de_passe(mots_de_passe[index][0])).pack()
+
             widget_texte.config(state='disabled')
 
+    def supprimer_mot_de_passe(self, id):
+        confirmation = messagebox.askokcancel("Confirmation", "Voulez-vous vraiment supprimer ce mot de passe ?")
+        if confirmation:
+            self.delete_password(id)
+            messagebox.showinfo("Succès", "Mot de passe supprimé avec succès !")
+            # Rafraîchir la fenêtre d'affichage après la suppression
+            self.afficher_mots_de_passe()
 
     def on_generer_mot_de_passe_click(self):
         fenetre_generation = Toplevel(self.root)
@@ -184,23 +195,41 @@ class ApplicationGestionnaireMotsDePasse:
         champ_mode = Entry(fenetre_generation)
         champ_mode.pack()
 
-        Button(fenetre_generation, text="Générer", command=lambda: self.on_generer_clic(champ_longueur, champ_mode)).pack()
+        Button(fenetre_generation, text="Générer", command=lambda: self.inserer_mot_de_passe_genere(
+            champ_longueur.get(),
+            champ_mode.get(),
+            fenetre_generation,
+            champ_mot_de_passe
+        )).pack()
 
-    def on_generer_clic(self, champ_longueur, champ_mode):
-        valeur_longueur = champ_longueur.get()
-        if valeur_longueur:
-            longueur = int(valeur_longueur)
-        else:
-            longueur = 8
+        # Ajouter le champ de mot de passe
+        champ_mot_de_passe = Entry(fenetre_generation)
+        champ_mot_de_passe.pack()
 
-        mode = int(champ_mode.get())
-        mot_de_passe = self.generer_mot_de_passe(longueur, mode)
+        # Ajouter le bouton de copie
+        Button(fenetre_generation, text="Copier", command=lambda: self.copier_mot_de_passe(champ_mot_de_passe.get())).pack()
 
-        fenetre_resultat = Toplevel(self.root)
-        fenetre_resultat.title("Mot de Passe Généré")
+    # ...
 
-        Label(fenetre_resultat, text="Mot de passe généré : " + mot_de_passe).pack()
+    def inserer_mot_de_passe_genere(self, longueur, mode, fenetre_generation, champ_mot_de_passe):
+        try:
+            longueur = int(longueur)
+            mode = int(mode)
+            mot_de_passe_genere = self.generer_mot_de_passe(longueur, mode)
 
+            # Insérer le mot de passe généré dans le champ de mot de passe de la fenêtre
+            champ_mot_de_passe.delete(0, 'end')
+            champ_mot_de_passe.insert(0, mot_de_passe_genere)
+
+        except ValueError:
+            messagebox.showerror("Erreur", "Veuillez entrer des valeurs valides pour la Longueur et le Mode.")
+
+    def copier_mot_de_passe(self, mot_de_passe):
+        self.root.clipboard_clear()
+        self.root.clipboard_append(mot_de_passe)
+        self.root.update()
+        messagebox.showinfo("Copié", "Mot de passe copié dans le presse-papiers.")
+    
     def executer(self):
         self.root.mainloop()
 
